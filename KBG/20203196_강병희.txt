@@ -1,0 +1,52 @@
+점검문제
+
+SELECT *
+FROM 고객
+WHERE 도시 LIKE '%서울%'
+AND (마일리지 BETWEEN 15000 AND 20000);
+
+SELECT DISTINCT 지역,
+				도시
+FROM 고객
+ORDER BY 1,2;
+
+SELECT *
+FROM 고객
+WHERE 도시 IN ('춘천시', '과천시', '광명시')
+AND (담당자직위 LIKE '%이사' OR 담당자직위 LIKE '%사원');
+
+SELECT *
+FROM 고객
+WHERE NOT (도시 LIKE '%광역시' OR 도시 LIKE '%특별시')
+ORDER BY 마일리지 DESC
+LIMIT 3;
+
+SELECT *
+FROM 고객
+WHERE NOT (지역 IS NULL OR 지역 = '') 
+AND NOT (담당자직위 = '대표 이사');
+
+/////////////////////////////////////////////////////////////////////////////실습문제 (4~)
+
+SELECT *
+FROM 제품
+WHERE 제품명 LIKE '%주스%';
+
+
+SELECT *
+FROM 제품
+WHERE 제품명 LIKE '%주스%'
+AND 단가 BETWEEN 5000 AND 10000;
+
+SELECT *
+FROM 제품
+WHERE 제품번호 IN (1,2,4,7,11,20);
+
+SELECT 제품번호,
+		제품명,
+		단가,
+		재고,
+        단가 * 재고 AS 재고금액
+FROM 제품
+ORDER BY 재고금액 DESC
+LIMIT 10;
